@@ -18,6 +18,7 @@ from django.urls import include, path
 from rest_framework import routers
 from tutorial.quickstart import views as quickstartViews
 from snippets import views as snippetViews
+from django.urls import path, include
 
 router = routers.DefaultRouter()
 router.register(r'users', quickstartViews.UserViewSet)
@@ -26,8 +27,7 @@ router.register(r'groups', quickstartViews.GroupViewSet)
 urlpatterns = [
     path('admin/', admin.site.urls),
     # path('', include(router.urls)),
-    path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
+    # path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     path('', include('snippets.urls')),
+    path('api-auth/', include('rest_framework.urls')),
 ]
-
-
